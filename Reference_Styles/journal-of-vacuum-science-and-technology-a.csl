@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-US">
+<style xmlns="http://purl.org/net/xbiblio/csl"
+       version="1.0"
+       class="in-text"
+       demote-non-dropping-particle="sort-only"
+       default-locale="en-US">
   <info>
-    <title>JVST A (derived from AIP Style Manual 4th edition) — no article titles</title>
+    <title>JVST A (derived from AIP Style Manual 4th edition) - no article titles</title>
     <title-short>JVST A</title-short>
-    <id>http://www.zotero.org/styles/jvst-a-no-article-titles</id>
-    <link href="http://www.zotero.org/styles/jvst-a-no-article-titles" rel="self"/>
+
+    <!-- Use a URN to avoid inventing URLs -->
+    <id>urn:uuid:6f3ad6f0-7f6b-4d8f-9f2e-6db7b6e1b2aa</id>
+
+    <!-- Keep only links that plausibly exist; remove the custom self URL -->
     <link href="http://www.zotero.org/styles/american-institute-of-physics" rel="template"/>
+
     <category citation-format="numeric"/>
     <category field="physics"/>
     <summary>Numeric superscript citations; bibliography omits article/paper titles (JVST A-like).</summary>
     <updated>2026-02-19T00:00:00+00:00</updated>
-    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">
+      This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License
+    </rights>
   </info>
 
   <macro name="author">
@@ -97,8 +107,7 @@
       <text macro="author" prefix=" " suffix=", "/>
 
       <choose>
-
-        <!-- Books, reports, etc: keep titles (not "paper titles") -->
+        <!-- Books, reports, etc: keep titles -->
         <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
           <group delimiter=" ">
             <group delimiter=", ">
@@ -115,7 +124,7 @@
           </group>
         </if>
 
-        <!-- Chapters / conference papers: omit paper/chapter title per your request -->
+        <!-- Chapters / conference papers: omit paper/chapter title -->
         <else-if type="chapter paper-conference" match="any">
           <group delimiter=", ">
             <group delimiter=" ">
@@ -139,7 +148,7 @@
           </group>
         </else-if>
 
-        <!-- Theses: keep title (not a "paper title" in the usual sense) -->
+        <!-- Theses: keep title -->
         <else-if type="thesis">
           <group delimiter=", ">
             <text variable="title" text-case="title"/>
@@ -162,7 +171,6 @@
             </group>
           </group>
         </else>
-
       </choose>
     </layout>
   </bibliography>
