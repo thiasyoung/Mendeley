@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<style xmlns="http://purl.org/net/xbiblio/csl"
-       version="1.0"
-       class="in-text"
-       demote-non-dropping-particle="sort-only"
-       default-locale="en-US">
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-US">
   <info>
-    <title>JVST A (derived from AIP Style Manual 4th edition) - no article titles</title>
-    <title-short>JVST A</title-short>
-
-    <!-- Use a URN to avoid inventing URLs -->
-    <id>urn:uuid:6f3ad6f0-7f6b-4d8f-9f2e-6db7b6e1b2aa</id>
-
-    <!-- Keep only links that plausibly exist; remove the custom self URL -->
-    <link href="http://www.zotero.org/styles/american-institute-of-physics" rel="template"/>
-
+    <title>AIP Style Manual 4th edition</title>
+    <title-short>American Institute of Physics</title-short>
+    <id>http://www.zotero.org/styles/american-institute-of-physics</id>
+    <link href="http://www.zotero.org/styles/american-institute-of-physics" rel="self"/>
+    <link href="http://www.aip.org/pubservs/style/4thed/toc.html" rel="documentation"/>
+    <link href="https://publishing.aip.org/wp-content/uploads/2021/03/AIP_Style_4thed.pdf" rel="documentation"/>
+    <!-- No attempt to make compound citations is made here <http://forums.zotero.org/discussion/4288/>-->
+    <author>
+      <name>Richard Karnesky</name>
+      <email>karnesky+zotero@gmail.com</email>
+      <uri>http://arc.nucapt.northwestern.edu/Richard_Karnesky</uri>
+    </author>
+    <contributor>
+      <name>Patrick O'Brien</name>
+    </contributor>
     <category citation-format="numeric"/>
     <category field="physics"/>
-    <summary>Numeric superscript citations; bibliography omits article/paper titles (JVST A-like).</summary>
-    <updated>2026-02-19T00:00:00+00:00</updated>
-    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">
-      This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License
-    </rights>
+    <summary>Common style used by AIP publications.</summary>
+    <updated>2024-03-27T11:18:50+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
-
   <macro name="author">
     <names variable="author">
       <name and="text" delimiter-precedes-last="always" initialize-with="."/>
@@ -33,14 +32,12 @@
       </substitute>
     </names>
   </macro>
-
   <macro name="editor">
     <names variable="editor">
       <label form="verb" suffix=" "/>
       <name delimiter=", " initialize-with="." and="text"/>
     </names>
   </macro>
-
   <macro name="year-date">
     <choose>
       <if variable="issued">
@@ -53,7 +50,6 @@
       </else>
     </choose>
   </macro>
-
   <macro name="day-date">
     <choose>
       <if variable="issued">
@@ -68,7 +64,6 @@
       </else>
     </choose>
   </macro>
-
   <macro name="publisher">
     <group prefix="(" suffix=")" delimiter=", ">
       <text variable="publisher"/>
@@ -76,7 +71,6 @@
       <text macro="year-date"/>
     </group>
   </macro>
-
   <macro name="edition">
     <choose>
       <if is-numeric="edition">
@@ -90,8 +84,6 @@
       </else>
     </choose>
   </macro>
-
-  <!-- In-text citations: numeric, collapsed, superscript -->
   <citation collapse="citation-number">
     <sort>
       <key variable="citation-number"/>
@@ -100,14 +92,11 @@
       <text variable="citation-number"/>
     </layout>
   </citation>
-
   <bibliography entry-spacing="0">
     <layout suffix=".">
       <text variable="citation-number" vertical-align="sup"/>
       <text macro="author" prefix=" " suffix=", "/>
-
       <choose>
-        <!-- Books, reports, etc: keep titles -->
         <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
           <group delimiter=" ">
             <group delimiter=", ">
@@ -123,10 +112,9 @@
             </group>
           </group>
         </if>
-
-        <!-- Chapters / conference papers: omit paper/chapter title -->
         <else-if type="chapter paper-conference" match="any">
           <group delimiter=", ">
+            <!-- JVST A-like: omit chapter/conference paper title -->
             <group delimiter=" ">
               <text term="in"/>
               <text variable="container-title" form="short" text-case="title" font-style="italic"/>
@@ -140,15 +128,12 @@
             </group>
           </group>
         </else-if>
-
         <else-if type="patent">
           <group delimiter=" ">
             <text variable="number" prefix=" "/>
             <text macro="day-date" prefix="(" suffix=")"/>
           </group>
         </else-if>
-
-        <!-- Theses: keep title -->
         <else-if type="thesis">
           <group delimiter=", ">
             <text variable="title" text-case="title"/>
@@ -157,13 +142,13 @@
             <text macro="year-date"/>
           </group>
         </else-if>
-
-        <!-- Journal articles (and default fallback): omit article title + omit issue -->
         <else>
           <group delimiter=", ">
+            <!-- JVST A-like: omit journal article title -->
             <group delimiter=" ">
               <text variable="container-title" form="short" text-case="title"/>
               <text variable="volume" font-weight="bold"/>
+              <!-- JVST A-like: omit issue number -->
             </group>
             <group delimiter=" ">
               <text variable="page"/>
